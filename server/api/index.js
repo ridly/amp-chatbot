@@ -9,7 +9,7 @@ function sendTextMessage(sender, text) {
 	let messageData = { text:text }
 	
 	request({
-		url: 'https://graph.facebook.com/v2.6/Unofficial-AMP-Chatbot-147422029003395/messages',
+		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: {access_token:token},
 		method: 'POST',
 		json: {
