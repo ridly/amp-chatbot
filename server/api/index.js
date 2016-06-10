@@ -2,6 +2,9 @@ import { Router } from 'express';
 import facets from './facets';
 import request from 'request';
 
+const token = "EAALLdY8JlO8BAPXAbLa5gYcgzexdLXYvdq21rhwR3isktiwLZCjlZBZAup6qoYmkiWcZB7koRuNdwjXiCorgm4hxDXou8UqJUtZA7NaZC3ZA6Uvli65D3d1cG1kuaGdNweKxTLYsicQWGvHLhZBFYpOWPQHN5j6wRPZA9cQhf";
+
+
 function sendTextMessage(sender, text) {
 	let messageData = { text:text }
 	
