@@ -2,7 +2,7 @@ import { Router } from 'express';
 import facets from './facets';
 import request from 'request';
 
-const token = "EAALLdY8JlO8BAPXAbLa5gYcgzexdLXYvdq21rhwR3isktiwLZCjlZBZAup6qoYmkiWcZB7koRuNdwjXiCorgm4hxDXou8UqJUtZA7NaZC3ZA6Uvli65D3d1cG1kuaGdNweKxTLYsicQWGvHLhZBFYpOWPQHN5j6wRPZA9cQhf";
+const token = "EAALLdY8JlO8BAIRZBQPd3YTN7YAcphz5rXVuxg1d1HcPGNg4l5m7njkcZCFC3oDWZCZAiJypY4O13ZCUSAl9vUtMYcEaDJN5JdHWYoTMNlJZAkZB1Gr1EzyaD5h1mxu4ZCB1ZAZBdhcoETyxhgIPsPYDA7WythNH92dCToyanGdNAeU2YaiuW05owr";
 
 
 function sendTextMessage(sender, text) {
