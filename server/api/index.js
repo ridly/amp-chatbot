@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import facets from './facets';
+import request from 'request';
 
 function sendTextMessage(sender, text) {
 	let messageData = { text:text }
