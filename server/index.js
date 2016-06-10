@@ -34,7 +34,7 @@ db( λ => {
         cert: fs.readFileSync('ssl/1_amp-chatbot.com_bundle.crt', 'utf8'),
         passphrase: 'timikem65'
 };
-    var httpsServer = https.createServer(options, app).listen(443, function () {
+    var httpsServer = https.createServer(options, app).listen(443, '0.0.0.0', function () {
         var host = httpsServer.address().address;
         var port = httpsServer.address().port;
         console.log('App listening at https://%s:%s', host, port);
