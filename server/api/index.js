@@ -1,6 +1,27 @@
 import { Router } from 'express';
 import facets from './facets';
 
+function sendTextMessage(sender, text) {
+	let messageData = { text:text }
+	
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+}
+
+
 export default function() {
 	var api = Router();
 
@@ -18,7 +39,25 @@ export default function() {
 
 	api.post('/', (req, res) => {
 		console.log(req.body.entry[0].messaging[0].message.text);
-		res.send('I am very happy!\n');
+		let messaging_events = req.body.entry[0].messaging
+		for (let i = 0; i < messaging_events.length; i++) {
+			let event = req.body.entry[0].messaging[i]
+			let sender = event.sender.id
+			if (event.message && event.message.text) {
+				let text = event.message.text
+				if (text === 'Generic') {
+					sendGenericMessage(sender)
+					continue
+				}
+				sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+			}
+			if (event.postback) {
+				let text = JSON.stringify(event.postback)
+				sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+				continue
+			}
+		}
+		res.sendStatus(200)
 	});
 
 	return api;
