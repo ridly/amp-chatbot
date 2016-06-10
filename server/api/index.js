@@ -16,5 +16,9 @@ export default function() {
 		  }
 	});
 
+	api.post('/', (req, res) => {
+		console.log(req.body);
+	});
+
 	return api;
 }
