@@ -19,8 +19,6 @@ export default function() {
 	api.post('/', (req, res) => {
 		console.log(req.body.entry[0].messaging[0].message.text);
 		res.send('I am very happy!\n');
-		res.sendStatus(200);
-		return;
 	});
 
 	return api;
